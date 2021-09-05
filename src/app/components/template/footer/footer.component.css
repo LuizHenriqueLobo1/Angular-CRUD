@@ -1,0 +1,7 @@
+mat-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 0;
+    font-weight: 350;
+}
