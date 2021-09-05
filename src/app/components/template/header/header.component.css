@@ -1,13 +1,14 @@
 mat-toolbar {
     display: flex;
     justify-content: space-between;
-    cursor: pointer;
 }
 
 mat-toolbar a {
     font-weight: 300;
+    cursor: pointer;
 }
 
 mat-toolbar i {
+    margin-right: 5px;
     vertical-align: middle;
 }
