@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
+import { MatTableModule } from '@angular/material/table';
 
 import { FormsModule } from '@angular/forms'
 
@@ -52,7 +53,8 @@ import { ProductReadComponent } from './components/product/product-read/product-
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,15 +2,10 @@ mat-card {
     width: 500px;
 }
 
-mat-card-title {
-    font-size: 1.8rem;
-}
-
 form {
     width: 300px;
     display: flex;
     flex-direction: column;
-    font-size: 1.1rem;
 }
 
 button {
