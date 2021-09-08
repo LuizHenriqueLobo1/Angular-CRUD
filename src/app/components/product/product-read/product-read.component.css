@@ -3,6 +3,10 @@ table {
     width: 100%;
 }
 
+a {
+    cursor: pointer;
+}
+
 .edit {
     margin-right: 5px;
 }
