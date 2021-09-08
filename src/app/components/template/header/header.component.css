@@ -1,14 +1,16 @@
 mat-toolbar {
     display: flex;
-    justify-content: space-between;
 }
 
 mat-toolbar span {
     cursor: pointer;
+    margin-right: 150px;
 }
 
 mat-toolbar a {
+    color: #fff;
     font-weight: 300;
+    text-decoration: none;
     cursor: pointer;
 }
 
