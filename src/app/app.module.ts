@@ -25,14 +25,16 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component';
 import { ProductCrudComponent } from './views/product-crud/product-crud.component';
 import { ProductCreateComponent } from './components/product/product-create/product-create.component';
+import { ProductReadComponent } from './components/product/product-read/product-read.component';
+import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ProductReadComponent } from './components/product/product-read/product-read.component';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(localePt);
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ registerLocaleData(localePt);
     HomeComponent,
     ProductCrudComponent,
     ProductCreateComponent,
-    ProductReadComponent
+    ProductReadComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,
