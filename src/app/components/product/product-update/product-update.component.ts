@@ -13,22 +13,22 @@ export class ProductUpdateComponent implements OnInit {
   product: Product = {
     name: '',
     price: undefined
+  };
+
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.product = this.productService.readById(`${id}`);
   }
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
-
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.productService.readById(`${id}`).subscribe(product => {
-      this.product = product
-    })
+  updateProduct() {
+    this.productService.update(this.product);
+    this.productService.showMessage("Produto atualizado com sucesso.");
+    this.router.navigate(["/products"]);
   }
-
-  updateProduct(): void {
-    this.productService.update(this.product).subscribe(() => {
-      this.productService.showMessage("Produto atualizado com sucesso.")
-      this.router.navigate(["/products"])
-    })
-  }
-  
 }

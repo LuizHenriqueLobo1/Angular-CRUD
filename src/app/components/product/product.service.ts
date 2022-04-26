@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
-import { Product } from './product.model'
-import { Observable } from 'rxjs';
+import { Product } from './product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,24 +20,41 @@ export class ProductService {
     })
   }
 
-  create(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.baseUrl, product)
+  getLocalStorageItems() {
+    return JSON.parse(localStorage.getItem('products') as string) || [];
   }
 
-  read(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl)
+  setLocalStorageItems(products: Product[]) {
+    localStorage.setItem('products', JSON.stringify(products));
   }
 
-  readById(id: string): Observable<Product> {
-    return this.http.get<Product>(`${this.baseUrl}/${id}`)
+  create(product: Product) {
+    let products = this.getLocalStorageItems();
+    product.id = products.length ? (parseInt(products[products.length - 1].id) + 1).toString() : '1';
+    products.push(product);
+    this.setLocalStorageItems(products);
   }
 
-  update(product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.baseUrl}/${product.id}`, product)
+  read(): Product[] {
+    return this.getLocalStorageItems() as Product[];
   }
 
-  delete(id: string): Observable<Product> {
-    return this.http.delete<Product>(`${this.baseUrl}/${id}`)
+  readById(id: string): Product {
+    return this.getLocalStorageItems().find((product: { id: string }) => product.id === id);
   }
 
+  update(product: Product) {
+    let products = this.getLocalStorageItems();
+    let targetProduct = products.find((_product: { id: string }) => _product.id === product.id) as Product;
+    targetProduct.name  = product.name;
+    targetProduct.price = product.price;
+    this.setLocalStorageItems(products);
+  }
+
+  delete(id: string) {
+    let products = this.getLocalStorageItems();
+    let targetProductIndex = products.findIndex((product: { id: string }) => product.id === id);
+    products.splice(targetProductIndex, 1);
+    this.setLocalStorageItems(products);
+  }
 }
